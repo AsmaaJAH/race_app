@@ -29,7 +29,7 @@ static String currentLanguageCode = "";
   static const double strokeAlignCenter = 0.0;
 
 //------ HomePage:
-  static const String adBanner = "adBanner";
+  static const String race = "Race";
 
   //----------------------------- const numbers ----------------------
   static const double double0_01 = 0.01;

@@ -43,12 +43,12 @@ class RacesDataModel {
   }
 }
 
-class AdBannerListResponse {
-  List<RacesDataModel?>? adBannerList;
+class RacesListResponse {
+  List<RacesDataModel?>? racesList;
   int? totalPages;
   int? totalRecords;
-  AdBannerListResponse({
-    this.adBannerList,
+  RacesListResponse({
+    this.racesList,
     this.totalPages,
     this.totalRecords,
   });

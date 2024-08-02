@@ -7,21 +7,21 @@ part 'races_state.dart';
 class RacesCubit extends Cubit<RacesStates> {
   RacesCubit() : super(RacesInitialState());
 
-  RequestStatus adBannerRequestStatus = RequestStatus.neutral;
+  RequestStatus raceRequestStatus = RequestStatus.neutral;
   List<RacesDataModel> racesList = [];
 
   void updateRacesRequestStatus({
     required RequestStatus requestStatus,
     List<RacesDataModel>? list,
   }) {
-    adBannerRequestStatus = requestStatus;
+    raceRequestStatus = requestStatus;
 
-    if (adBannerRequestStatus == RequestStatus.loading) {
+    if (raceRequestStatus == RequestStatus.loading) {
       emit(RacesLoadingState());
-    } else if (adBannerRequestStatus == RequestStatus.completed) {
+    } else if (raceRequestStatus == RequestStatus.completed) {
       racesList = list!;
       emit(RacesSuccessState());
-    } else if (adBannerRequestStatus == RequestStatus.error) {
+    } else if (raceRequestStatus == RequestStatus.error) {
       emit(RacesFailureState());
     }
   }

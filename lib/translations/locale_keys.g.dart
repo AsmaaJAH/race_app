@@ -14,7 +14,6 @@ abstract class LocaleKeys {
   
   //--Home page:
   static const someThingWentWrong = "someThingWentWrong";
-  static const someThingWentWrongAdBanner = "someThingWentWrongAdBanner";
-  static const adBanner = "adBanner";
+  static const someThingWentWrongLoading = "someThingWentWrongLoading";
   
 }

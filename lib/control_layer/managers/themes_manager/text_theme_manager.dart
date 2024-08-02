@@ -26,13 +26,10 @@ class TextThemeManager {
       );
 //================================= FontWeights ========================================
 // -------------------------------- thin=w100------------------------------------------
-//-------------------------------extraLight==w200--------------------------------------
 // --------------------------------light==w300-----------------------------------------
 //-------------------------------regularFont==w400-------------------------------------
 //-------------------------------mediumFont==w500--------------------------------------
-//------------------------------semiBoldFont==w600-------------------------------------
 //---------------------------------boldFont==w700--------------------------------------
-//------------------------------ extraBoldFont=w800 -----------------------------------
 //---------------------------------- black=w900 ---------------------------------------
 
   static TextStyle thinFont(
@@ -147,20 +144,17 @@ class TextThemeManager {
     switch (fontWeight) {
       case CustomTextWeight.thinFont:
         return thinFont(fontSize: fontSize, fontColor: fontColor);
-      case CustomTextWeight.extraLightFont:
-        return extraLightFont(fontSize: fontSize, fontColor: fontColor);
+
       case CustomTextWeight.lightFont:
         return lightFont(fontSize: fontSize, fontColor: fontColor);
       case CustomTextWeight.regularFont:
         return regularFont(fontSize: fontSize, fontColor: fontColor);
       case CustomTextWeight.mediumFont:
         return mediumFont(fontSize: fontSize, fontColor: fontColor);
-      case CustomTextWeight.semiBoldFont:
-        return semiBoldFont(fontSize: fontSize, fontColor: fontColor);
+
       case CustomTextWeight.boldFont:
         return boldFont(fontSize: fontSize, fontColor: fontColor);
-      case CustomTextWeight.extraBoldFont:
-        return extraBoldFont(fontSize: fontSize, fontColor: fontColor);
+
       case CustomTextWeight.blackFont:
         return extraBoldFont(fontSize: fontSize, fontColor: fontColor);
     }
