@@ -1,0 +1,16 @@
+{
+
+
+    "___comment": "for localization using packages like:easy localization or so on..",
+    "text": "Arabic",
+    "Accept":"Accept",
+    "Cancel":"Cancel",
+    "firstItem":"item",
+    "secondItem": "write your item name here",
+  
+    "splachScreenTitle":"Racemate",
+    
+    "someThingWentWrong":"Something went wrong. Please try again later!",
+    "someThingWentWrongLoading":"Something went wrong while loading. Please try again later!"
+
+}
