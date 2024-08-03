@@ -144,7 +144,7 @@ class AppSnackBar {
             ),
           ),
       backgroundColor: backgroundColor ??
-          (isError ? AppColors.redSnackBar : AppColors.green),
+          (isError ? const Color.fromARGB(195, 113, 0, 0) : const Color.fromARGB(182, 0, 10, 53)),
     ));
   }
 }

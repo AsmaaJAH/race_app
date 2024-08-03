@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:race_app/data_layer/cubits/visibility_cubit.dart';
 
 class AppOverlayBuilder {
   const AppOverlayBuilder();
@@ -7,6 +9,8 @@ class AppOverlayBuilder {
     required BuildContext context,
     required Widget customOverlayWidget,
   }) {
+    BlocProvider.of<VisibilityCubit>(context).turnOffVisibility();
+
     showModalBottomSheet(
       shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
@@ -15,6 +19,8 @@ class AppOverlayBuilder {
       isScrollControlled: true,
       context: context,
       builder: (ctx) => customOverlayWidget,
-    );
+    ).whenComplete(() {
+      BlocProvider.of<VisibilityCubit>(context).turnOnNavBarVisibility();
+    });
   }
 }

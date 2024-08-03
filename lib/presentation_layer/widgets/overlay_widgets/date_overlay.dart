@@ -9,6 +9,7 @@ import 'package:race_app/constants/variables.dart';
 import 'package:race_app/control_layer/functions/home_assist_functions.dart';
 import 'package:race_app/control_layer/managers/themes_manager/text_theme_manager.dart';
 import 'package:race_app/data_layer/cubits/races_cubit.dart';
+import 'package:race_app/data_layer/cubits/visibility_cubit.dart';
 import 'package:race_app/presentation_layer/widgets/customized_button.dart';
 import 'package:race_app/presentation_layer/widgets/overlay_widgets/overlay_title.dart';
 
@@ -24,6 +25,8 @@ class _DateOverlayState extends State<DateOverlay> {
   DateTime finalDate = DateTime.now();
 
   void _onPressDone(context) {
+    BlocProvider.of<VisibilityCubit>(context).turnOnNavBarVisibility();
+
     if (BlocProvider.of<RacesCubit>(context).filters[widget.index].isEnabled ==
         false) {
       BlocProvider.of<RacesCubit>(context).filters[widget.index].isEnabled =
@@ -103,7 +106,7 @@ class _DateOverlayState extends State<DateOverlay> {
               fontSize: 14,
               fontWeight: CustomTextWeight.boldFont,
               backgroundColor: AppColors.secondary,
-              height: kScreenHeight * 0.05,
+              height: kScreenHeight * 0.06,
               onPressed: () {
                 _onPressDone(context);
               },

@@ -5,6 +5,7 @@ import 'package:race_app/constants/app_enum.dart';
 import 'package:race_app/constants/app_screen_dimensions.dart';
 import 'package:race_app/constants/variables.dart';
 import 'package:race_app/data_layer/cubits/races_cubit.dart';
+import 'package:race_app/data_layer/cubits/visibility_cubit.dart';
 import 'package:race_app/presentation_layer/widgets/custom_localized_text_widget.dart';
 import 'package:race_app/presentation_layer/widgets/customized_button.dart';
 
@@ -18,6 +19,8 @@ class TypeOverlay extends StatefulWidget {
 class _TypeOverlayState extends State<TypeOverlay> {
   int pickedIndex = 0;
   void _onPressDone(context) {
+    BlocProvider.of<VisibilityCubit>(context).turnOnNavBarVisibility();
+
     var cubit = BlocProvider.of<RacesCubit>(context);
     if (cubit.filters[widget.filterIndex].isEnabled == false) {
       cubit.filters[widget.filterIndex].isEnabled = true;
@@ -75,7 +78,7 @@ class _TypeOverlayState extends State<TypeOverlay> {
               fontSize: 14,
               fontWeight: CustomTextWeight.boldFont,
               backgroundColor: AppColors.secondary,
-              height: kScreenHeight * 0.05,
+              height: kScreenHeight * 0.06,
               onPressed: () {
                 _onPressDone(context);
               },

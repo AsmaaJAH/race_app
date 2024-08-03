@@ -6,6 +6,7 @@ import 'package:race_app/constants/app_screen_dimensions.dart';
 import 'package:race_app/constants/variables.dart';
 import 'package:race_app/control_layer/functions/home_assist_functions.dart';
 import 'package:race_app/data_layer/cubits/races_cubit.dart';
+import 'package:race_app/data_layer/cubits/visibility_cubit.dart';
 import 'package:race_app/presentation_layer/widgets/custom_localized_text_widget.dart';
 import 'package:race_app/presentation_layer/widgets/customized_button.dart';
 import 'package:race_app/presentation_layer/widgets/overlay_widgets/overlay_title.dart';
@@ -20,6 +21,8 @@ class DistanceOverlay extends StatefulWidget {
 class _DistanceOverlayState extends State<DistanceOverlay> {
   RangeValues values = const RangeValues(0, 200);
   void _onPressDone(context) {
+    BlocProvider.of<VisibilityCubit>(context).turnOnNavBarVisibility();
+
     if (BlocProvider.of<RacesCubit>(context).filters[widget.index].isEnabled ==
         false) {
       BlocProvider.of<RacesCubit>(context).filters[widget.index].isEnabled =
@@ -84,7 +87,7 @@ class _DistanceOverlayState extends State<DistanceOverlay> {
               fontSize: 14,
               fontWeight: CustomTextWeight.boldFont,
               backgroundColor: AppColors.secondary,
-              height: kScreenHeight * 0.05,
+              height: kScreenHeight * 0.06,
               onPressed: () {
                 _onPressDone(context);
               },

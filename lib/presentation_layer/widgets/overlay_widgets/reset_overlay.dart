@@ -6,6 +6,7 @@ import 'package:race_app/constants/app_screen_dimensions.dart';
 import 'package:race_app/constants/variables.dart';
 import 'package:race_app/control_layer/managers/themes_manager/text_theme_manager.dart';
 import 'package:race_app/data_layer/cubits/races_cubit.dart';
+import 'package:race_app/data_layer/cubits/visibility_cubit.dart';
 import 'package:race_app/presentation_layer/widgets/customized_button.dart';
 
 class ResetOverlay extends StatelessWidget {
@@ -40,6 +41,9 @@ class ResetOverlay extends StatelessWidget {
               backgroundColor: AppColors.secondary,
               height: kScreenHeight * 0.05,
               onPressed: () {
+                BlocProvider.of<VisibilityCubit>(context)
+                    .turnOnNavBarVisibility();
+
                 BlocProvider.of<RacesCubit>(context).reset();
                 Navigator.of(context).pop();
               },
@@ -58,6 +62,8 @@ class ResetOverlay extends StatelessWidget {
               borderColor: AppColors.primary,
               height: kScreenHeight * 0.05,
               onPressed: () {
+                BlocProvider.of<VisibilityCubit>(context)
+                    .turnOnNavBarVisibility();
                 Navigator.of(context).pop();
               },
             ),

@@ -10,6 +10,7 @@ class RacesCubit extends Cubit<RacesStates> {
   RacesCubit() : super(RacesInitialState());
   bool isTryingToFind = false;
 
+
   RequestStatus raceRequestStatus = RequestStatus.neutral;
   List<RacesDataModel> racesList = [];
   List<RacesDataModel> exploreList = [];
@@ -33,6 +34,12 @@ class RacesCubit extends Cubit<RacesStates> {
       emit(RacesLoadingState());
     } else if (raceRequestStatus == RequestStatus.completed) {
       racesList = list!;
+      while (index < 5 &&
+          exploreList.length != racesList.length &&
+          index < pageSize) {
+        exploreList.add(racesList[index]);
+        index++;
+      }
       emit(RacesSuccessState());
     } else if (raceRequestStatus == RequestStatus.error) {
       emit(RacesFailureState());

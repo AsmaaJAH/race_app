@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
@@ -6,6 +7,7 @@ import 'package:race_app/constants/app_colors.dart';
 import 'package:race_app/constants/app_screen_dimensions.dart';
 import 'package:race_app/constants/variables.dart';
 import 'package:race_app/control_layer/managers/bottom_navigator_manager.dart';
+import 'package:race_app/data_layer/cubits/visibility_cubit.dart';
 import 'package:race_app/presentation_layer/screens/delete_me.dart';
 import 'package:race_app/presentation_layer/screens/home_page_screen.dart';
 
@@ -74,28 +76,35 @@ class PersistTabView extends StatelessWidget {
           padding: EdgeInsets.only(
               bottom: kScreenHeight * 0.015) // here is the padding
           ),
-      child: PersistentTabView(
-        context,
-        controller: kController,
-        screens: _navScreens(),
-        items: navBarsItems,
-        navBarHeight: kScreenHeight * 0.11,
-        backgroundColor: AppColors.white,
-        handleAndroidBackButtonPress: true,
-        resizeToAvoidBottomInset: true,
-        stateManagement: true,
-        hideNavigationBarWhenKeyboardAppears: true,
-        decoration: NavBarDecoration(
-          borderRadius: BorderRadius.circular(Variables.ten),
-          colorBehindNavBar: AppColors.white,
-          boxShadow: <BoxShadow>[
-            const BoxShadow(
-              color: AppColors.primary,
-              blurRadius: Variables.five,
+      child: BlocConsumer<VisibilityCubit, VisibilityStates>(
+        listener: (context, state) {
+        },
+        builder: (context, state) {
+          return PersistentTabView(
+            context,
+            controller: kController,
+            screens: _navScreens(),
+            items: navBarsItems,
+            isVisible: BlocProvider.of<VisibilityCubit>(context).isVisible,
+            navBarHeight: kScreenHeight * 0.11,
+            backgroundColor: AppColors.white,
+            handleAndroidBackButtonPress: true,
+            resizeToAvoidBottomInset: true,
+            stateManagement: true,
+            hideNavigationBarWhenKeyboardAppears: true,
+            decoration: NavBarDecoration(
+              borderRadius: BorderRadius.circular(Variables.ten),
+              colorBehindNavBar: AppColors.white,
+              boxShadow: <BoxShadow>[
+                const BoxShadow(
+                  color: Color.fromARGB(140, 0, 10, 53),
+                  blurRadius: Variables.five,
+                ),
+              ],
             ),
-          ],
-        ),
-        navBarStyle: NavBarStyle.simple,
+            navBarStyle: NavBarStyle.simple,
+          );
+        },
       ),
     );
   }

@@ -7,6 +7,7 @@ import 'package:race_app/constants/variables.dart';
 import 'package:race_app/control_layer/functions/home_assist_functions.dart';
 import 'package:race_app/control_layer/managers/themes_manager/text_theme_manager.dart';
 import 'package:race_app/data_layer/cubits/races_cubit.dart';
+import 'package:race_app/data_layer/cubits/visibility_cubit.dart';
 import 'package:race_app/data_layer/models/home_page_models/location_data_model.dart';
 import 'package:race_app/presentation_layer/widgets/custom_localized_text_widget.dart';
 import 'package:race_app/presentation_layer/widgets/customized_button.dart';
@@ -22,6 +23,8 @@ class LocationOverlay extends StatefulWidget {
 
 class _LocationOverlayState extends State<LocationOverlay> {
   void _onPressDone(context) {
+    BlocProvider.of<VisibilityCubit>(context).turnOnNavBarVisibility();
+
     if (BlocProvider.of<RacesCubit>(context).filters[widget.index].isEnabled ==
         false) {
       BlocProvider.of<RacesCubit>(context).filters[widget.index].isEnabled =
@@ -102,7 +105,7 @@ class _LocationOverlayState extends State<LocationOverlay> {
               fontSize: 14,
               fontWeight: CustomTextWeight.boldFont,
               backgroundColor: AppColors.secondary,
-              height: kScreenHeight * 0.05,
+              height: kScreenHeight * 0.06,
               onPressed: () {
                 _onPressDone(context);
               },
@@ -131,7 +134,7 @@ class _CustomLocationListileState extends State<CustomLocationListile> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
+      padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 24),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

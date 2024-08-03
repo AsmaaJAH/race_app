@@ -24,7 +24,7 @@ class _RacesBodyWidgetsState extends State<RacesBodyWidgets>
   late HomeRepository _homeRepository;
   late RacesCubit _cubit;
 
-  List<Widget> _slivers(context, cubit) => [
+  List<Widget> _slivers(context, RacesCubit cubit) => [
         SliverPadding(
             padding: EdgeInsets.only(
               top: kScreenWidth * 0.055,
@@ -32,7 +32,12 @@ class _RacesBodyWidgetsState extends State<RacesBodyWidgets>
               right: kScreenWidth * 0.04,
               bottom: kScreenWidth * 0.04,
             ),
-            sliver: const SliverToBoxAdapter(child: SearchBarWidget())),
+            sliver: SliverToBoxAdapter(
+                child: SearchBarWidget(
+                    searchBarHint: "Search Race Name or Country",
+                    onChanged: (input) {
+                      BlocProvider.of<RacesCubit>(context).search(input);
+                    }))),
         const SliverToBoxAdapter(
           child: HorizonticalFiltersRow(),
         ),

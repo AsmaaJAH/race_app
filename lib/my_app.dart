@@ -5,6 +5,7 @@ import 'package:race_app/constants/app_screen_dimensions.dart';
 import 'package:race_app/constants/variables.dart';
 import 'package:race_app/control_layer/managers/themes_manager/mode_themes_manager.dart';
 import 'package:race_app/data_layer/cubits/races_cubit.dart';
+import 'package:race_app/data_layer/cubits/visibility_cubit.dart';
 import 'package:race_app/presentation_layer/screens/splash_screen.dart';
 
 GlobalKey<NavigatorState> kNavigatorKey = GlobalKey<NavigatorState>();
@@ -17,7 +18,10 @@ class MyApp extends StatelessWidget {
     knowScreenWidth(context);
     knowScreenHeight(context);
     return MultiBlocProvider(
-      providers: [BlocProvider(create: (_) => RacesCubit())],
+      providers: [
+        BlocProvider(create: (_) => RacesCubit()),
+        BlocProvider(create: (_) => VisibilityCubit()),
+      ],
       child: MaterialApp(
         title: 'Races',
         debugShowCheckedModeBanner: false,
@@ -27,10 +31,10 @@ class MyApp extends StatelessWidget {
         supportedLocales: context.supportedLocales,
         locale: context.locale,
         navigatorKey: kNavigatorKey,
-       home: const SafeArea(
-            minimum: EdgeInsets.all(Variables.two),
-            child: SplashScreen(),
-          ),
+        home: const SafeArea(
+          minimum: EdgeInsets.all(Variables.two),
+          child: SplashScreen(),
+        ),
       ),
     );
   }

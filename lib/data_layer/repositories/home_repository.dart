@@ -28,6 +28,7 @@ class HomeRepository {
       data.addAll(List<RacesDataModel>.from(json.decode(response.responseBody).map((element) => RacesDataModel.fromJson(element))));
       homeBlocProvider.updateRacesRequestStatus(
           requestStatus: RequestStatus.completed, list: data);
+        
     } else if (response != null && response.error != null) {
       homeBlocProvider.updateRacesRequestStatus(
           requestStatus: RequestStatus.error);
