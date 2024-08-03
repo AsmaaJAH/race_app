@@ -19,7 +19,7 @@ class CustomLocalizedTextWidget extends StatelessWidget {
     this.textDirection,
     required this.stringKey,
     this.fontSize = 14,
-    this.isTranslate = true,
+    this.isTranslate = false, //true is my default in real-life apps 
     this.isSoftWrapped = true,
     this.isThreeDotsInOverFlow =
         false, //it make no sense to me to set it to true if the "isTranslate" is also true..

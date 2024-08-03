@@ -25,7 +25,7 @@
         "date": "20240601",
         "country": "Sweden",
         "city": "Stockholm",
-        "image": "sweden.jpg",
+        "image": "sweden.jpeg",
         "type": "Real-time",
         "distances": "1,10,42.2"
     },
@@ -53,7 +53,7 @@
         "date": "20240903",
         "country": "Australia",
         "city": "Lorne",
-        "image": "lorne.jpg",
+        "image": "lorne.jpeg",
         "type": "Real-time",
         "distances": "5,16,21.1,42.2"
     },
@@ -72,7 +72,7 @@
         "date": "20250401",
         "country": "Sweden",
         "city": "Stockholm",
-        "image": "sweden.jpg",
+        "image": "sweden.jpeg",
         "type": "Real-time",
         "distances": "39.1,50,160.93"
     },
@@ -100,7 +100,7 @@
         "date": "20240803",
         "country": "United States of America",
         "city": "Tacoma",
-        "image": "tacoma.jpg",
+        "image": "tacoma.jpeg",
         "type": "Real-time",
         "distances": "5,21.1,42.2"
     },
@@ -109,7 +109,7 @@
         "date": "20250123",
         "country": "United States of America",
         "city": "Tacoma",
-        "image": "tacoma.jpg",
+        "image": "tacoma.jpeg",
         "type": "Real-time",
         "distances": "47.5,59.53,117,162.5"
     },
@@ -128,7 +128,7 @@
         "date": "20240824",
         "country": "Egypt",
         "city": "Palm Hills",
-        "image": "glow.jpg",
+        "image": "glow.jpeg",
         "type": "Real-time",
         "distances": "5"
     },
@@ -138,7 +138,7 @@
         "date": "20241010",
         "country": "Egypt",
         "city": "Somabay",
-        "image": "somabay.jpg",
+        "image": "somabay.jpeg",
         "type": "Real-time",
         "distances": "1,10"
     },
@@ -147,7 +147,7 @@
         "date": "20241215",
         "country": "Egypt",
         "city": "Cairo",
-        "image": "pyramids.jpg",
+        "image": "pyramids.jpeg",
         "type": "Real-time",
         "distances": "2,5"
     }

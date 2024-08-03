@@ -2,19 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:race_app/constants/app_colors.dart';
 import 'package:race_app/constants/app_fonts.dart';
 
-
 class ModeThemeManager {
   const ModeThemeManager._();
 
 // colorsScheme:
   static final colorScheme = ColorScheme.fromSeed(
     brightness: Brightness.light,
-    seedColor: AppColors.commonWhite,
+    seedColor: AppColors.white,
   );
 
   static final darkColorScheme = ColorScheme.fromSeed(
     brightness: Brightness.dark,
-    seedColor: AppColors.commonWhite,
+    seedColor: AppColors.white,
   );
 
 // Themes:
