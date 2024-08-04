@@ -78,7 +78,9 @@ class _TypeOverlayState extends State<TypeOverlay> {
               fontSize: 14,
               fontWeight: CustomTextWeight.boldFont,
               backgroundColor: AppColors.secondary,
-              height: kScreenHeight * 0.06,
+              height: kScreenWidth > 600
+                  ? kScreenHeight * 0.04
+                  : kScreenHeight * 0.06,
               onPressed: () {
                 _onPressDone(context);
               },

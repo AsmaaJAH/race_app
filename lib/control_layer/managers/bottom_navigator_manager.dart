@@ -26,14 +26,15 @@ class BottomNavigatorManager {
     return PersistentBottomNavBarItem(
       contentPadding: contentPadding ?? Variables.zero,
       icon: activeIconWidget,
-      iconSize: iconSize ?? kScreenWidth * 0.085,
+      iconSize: iconSize ?? kScreenWidth * 0.075,
       inactiveIcon: inActiveIconWidget,
+    
       title: title?.tr(),
       onPressed: onPressed,
       activeColorPrimary: AppColors.primary,
       inactiveColorPrimary: AppColors.lightBlue,
       textStyle: TextThemeManager.mediumFont(
-        fontSize: Variables.double12,
+        fontSize: Variables.double14,
       ),
     );
   }

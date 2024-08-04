@@ -24,8 +24,8 @@ List<Widget> _navScreens() {
   ];
 }
 
-class PersistTabView extends StatelessWidget {
-  const PersistTabView({super.key});
+class PersistNavBarView extends StatelessWidget {
+  const PersistNavBarView({super.key});
 
   List<PersistentBottomNavBarItem> get navBarsItems {
     return [
@@ -46,11 +46,11 @@ class PersistTabView extends StatelessWidget {
       PersistentBottomNavBarItem(
         icon: Center(
           child: CircleAvatar(
-            radius: kScreenHeight * 0.045,
+            radius: kScreenHeight * 0.043,
             backgroundColor: AppColors.secondary,
             child: SvgPicture.asset(
               'assets/images/racemate_icon.svg',
-              height: kScreenHeight * 0.05,
+              height: kScreenHeight * 0.048,
               fit: BoxFit.fitHeight,
             ),
           ),
@@ -77,23 +77,25 @@ class PersistTabView extends StatelessWidget {
               bottom: kScreenHeight * 0.015) // here is the padding
           ),
       child: BlocConsumer<VisibilityCubit, VisibilityStates>(
-        listener: (context, state) {
-        },
+        listener: (context, state) {},
         builder: (context, state) {
           return PersistentTabView(
             context,
             controller: kController,
             screens: _navScreens(),
+            padding: EdgeInsets.only(top: Variables.ten),
             items: navBarsItems,
             isVisible: BlocProvider.of<VisibilityCubit>(context).isVisible,
-            navBarHeight: kScreenHeight * 0.11,
+            navBarHeight: kScreenHeight * 0.08,
             backgroundColor: AppColors.white,
             handleAndroidBackButtonPress: true,
             resizeToAvoidBottomInset: true,
             stateManagement: true,
             hideNavigationBarWhenKeyboardAppears: true,
             decoration: NavBarDecoration(
-              borderRadius: BorderRadius.circular(Variables.ten),
+              borderRadius: kScreenWidth > 500
+                  ? BorderRadius.vertical(top: Radius.circular(35))
+                  : BorderRadius.vertical(top: Radius.circular(25)),
               colorBehindNavBar: AppColors.white,
               boxShadow: <BoxShadow>[
                 const BoxShadow(

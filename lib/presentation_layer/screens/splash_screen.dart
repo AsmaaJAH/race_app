@@ -4,7 +4,7 @@ import 'package:race_app/constants/app_colors.dart';
 import 'package:race_app/constants/app_image_paths.dart';
 import 'package:race_app/constants/app_screen_dimensions.dart';
 import 'package:race_app/constants/variables.dart';
-import 'package:race_app/presentation_layer/screens/persist_tab_view.dart';
+import 'package:race_app/presentation_layer/screens/persist_navbar_view.dart';
 import 'package:race_app/presentation_layer/widgets/custom_localized_text_widget.dart';
 import 'package:race_app/translations/locale_keys.g.dart';
 
@@ -53,14 +53,14 @@ class _SplashScreenState extends State<SplashScreen> {
 
   void startTimer() {
     Timer(const Duration(milliseconds: Variables.int2500), () {
-      navigateUser(); 
+      navigateUser();
     });
   }
 
   void navigateUser() async {
     Navigator.of(context).pushReplacement(
       MaterialPageRoute(
-        builder: (context) => const PersistTabView(),
+        builder: (context) => const PersistNavBarView(),
       ),
     );
   }

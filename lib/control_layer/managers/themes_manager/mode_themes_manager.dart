@@ -41,8 +41,14 @@ class ModeThemeManager {
     fontFamily: AppFonts.fontFamily,
     primaryColor: AppColors.primary,
     dialogBackgroundColor: AppColors.offWhiteBackground,
+    datePickerTheme: const DatePickerThemeData(
+      //because of time limits of task
+      backgroundColor: AppColors.secondary,
+      dividerColor: AppColors.primary,
+    ),
     textSelectionTheme: const TextSelectionThemeData(
       cursorColor: AppColors.primary,
     ),
+    bottomNavigationBarTheme: BottomNavigationBarThemeData()
   );
 }

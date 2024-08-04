@@ -54,10 +54,8 @@ class CustomizedAppBar extends StatelessWidget {
             ),
           ]),
       flexibleSpace: FlexibleSpaceBar(
-      
         background: Container(
-          padding: EdgeInsets.only(
-              bottom: kScreenHeight * 0.02),
+          padding: EdgeInsets.only(bottom: Variables.double14),
           decoration: const BoxDecoration(
             image: DecorationImage(
               image: AssetImage('assets/images/flexible_space_bar.png'),
@@ -75,7 +73,13 @@ class CustomizedAppBar extends StatelessWidget {
                       const NotificationsIconWidget(),
                       IconButton(
                           onPressed: () {},
-                          icon: SvgPicture.asset('assets/images/account.svg')),
+                          icon: CircleAvatar(
+                              radius: kScreenWidth > 500
+                                  ? kScreenWidth * 0.02
+                                  : kScreenWidth * 0.035,
+                              backgroundColor: AppColors.secondary,
+                              child: Icon(Icons.person))),
+                      //icon: SvgPicture.asset('assets/images/account.svg')),
                     ],
                   )
                 ]),

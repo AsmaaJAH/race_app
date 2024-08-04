@@ -28,7 +28,9 @@ class HorizonticalFiltersRow extends StatelessWidget {
                 context: context, customOverlayWidget: const ResetOverlay());
           },
           child: Container(
-            padding: EdgeInsets.all(kScreenWidth * 0.032),
+            padding: EdgeInsets.all(kScreenWidth > 600
+                ? kScreenWidth * 0.016
+                : kScreenWidth * 0.032),
             margin: EdgeInsets.only(left: kScreenWidth * 0.04),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
@@ -38,7 +40,9 @@ class HorizonticalFiltersRow extends StatelessWidget {
                 Icon(
                   FontAwesomeIcons.filter,
                   color: AppColors.white,
-                  size: kScreenWidth * 0.03,
+                  size: kScreenWidth > 600
+                      ? kScreenWidth * 0.015
+                      : kScreenWidth * 0.03,
                 ),
                 const SizedBox(
                   width: Variables.five,
@@ -135,9 +139,12 @@ class HorizonticalFiltersRow extends StatelessWidget {
                                             fontColor: AppColors.white,
                                           ),
                                         ),
-                                        const Icon(
+                                        Icon(
                                           Icons.keyboard_arrow_down_rounded,
                                           color: Colors.white,
+                                          size: kScreenWidth > 600
+                                              ? kScreenWidth * 0.033
+                                              : kScreenWidth * 0.065,
                                         )
                                       ],
                                     ),
@@ -161,9 +168,12 @@ class HorizonticalFiltersRow extends StatelessWidget {
                                             stringKey: filter.value.filter,
                                             style: TextThemeManager.mediumFont(
                                                 fontSize: 14)),
-                                        const Icon(
+                                        Icon(
                                           Icons.keyboard_arrow_down_rounded,
                                           color: AppColors.primary,
+                                          size: kScreenWidth > 600
+                                              ? kScreenWidth * 0.031
+                                              : kScreenWidth * 0.063,
                                         )
                                       ],
                                     ),
