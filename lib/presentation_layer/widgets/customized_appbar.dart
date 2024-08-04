@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:race_app/constants/app_colors.dart';
 import 'package:race_app/constants/app_image_paths.dart';
 import 'package:race_app/constants/app_screen_dimensions.dart';
