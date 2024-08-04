@@ -150,7 +150,7 @@ class TwoOptionsDialogWidget extends StatelessWidget {
                     fontWeight: CustomTextWeight.regularFont,
                     backgroundColor: AppColors.offWhiteBackground,
                     textColor:
-                        positiveButtonColor ?? AppColors.greenAcceptDialog,
+                        positiveButtonColor ?? AppColors.primary,
                   )
                 ],
               ),

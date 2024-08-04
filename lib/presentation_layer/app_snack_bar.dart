@@ -111,7 +111,7 @@ class AppSnackBar {
                     : isError
                         ? Container(
                             decoration: const BoxDecoration(
-                              color: AppColors.commonWhite,
+                              color: AppColors.white,
                               shape: BoxShape.circle,
                             ),
                             margin: EdgeInsetsDirectional.only(
@@ -128,7 +128,7 @@ class AppSnackBar {
                             child: Icon(
                                 successIcon ?? Icons.check_circle_rounded,
                                 size: Variables.double24,
-                                color: AppColors.commonWhite),
+                                color: AppColors.white),
                           ),
                 CustomLocalizedTextWidget(
                   isTranslate: isSnackBarLocalized,
@@ -136,7 +136,7 @@ class AppSnackBar {
                   textAlign: TextAlign.start,
                   style: textStyle ??
                       TextThemeManager.boldFont(
-                          fontColor: AppColors.commonWhite,
+                          fontColor: AppColors.white,
                           fontSize: Variables.double16),
                 ),
                 suffix != null ? suffix! : const SizedBox.shrink()
@@ -144,7 +144,7 @@ class AppSnackBar {
             ),
           ),
       backgroundColor: backgroundColor ??
-          (isError ? AppColors.redSnackBar : AppColors.green),
+          (isError ? const Color.fromARGB(195, 113, 0, 0) : const Color.fromARGB(182, 0, 10, 53)),
     ));
   }
 }

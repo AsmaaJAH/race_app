@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:race_app/constants/app_enum.dart';
 import 'package:race_app/data_layer/cubits/races_cubit.dart';
@@ -21,14 +23,12 @@ class HomeRepository {
         requestStatus: RequestStatus.loading);
     ResponseWrapperModel? response = await _homeService.getList();
     if (response != null && response.isSucceeded) {
-      final apiData = (response.responseBody as List<dynamic>);
+      debugPrint(response.responseBody);
       final List<RacesDataModel> data = [];
-      for (var element in apiData) {
-        data.add(RacesDataModel.fromJson(element));
-      }
-
+      data.addAll(List<RacesDataModel>.from(json.decode(response.responseBody).map((element) => RacesDataModel.fromJson(element))));
       homeBlocProvider.updateRacesRequestStatus(
           requestStatus: RequestStatus.completed, list: data);
+        
     } else if (response != null && response.error != null) {
       homeBlocProvider.updateRacesRequestStatus(
           requestStatus: RequestStatus.error);

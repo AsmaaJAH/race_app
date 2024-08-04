@@ -7,7 +7,6 @@ import 'package:race_app/my_app.dart';
 class DeviceInfo {
   const DeviceInfo._();
 
-  //dummy initialization after declaration
   static var currentDeviceInfo = DeviceModel(
     deviceType: 'unknown',
     mostFavDeviceLangCode: 'en',

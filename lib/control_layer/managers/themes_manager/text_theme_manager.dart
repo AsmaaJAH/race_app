@@ -1,6 +1,5 @@
 
 import 'package:flutter/material.dart';
-import 'package:race_app/constants/app_colors.dart';
 import 'package:race_app/constants/app_enum.dart';
 import 'package:race_app/constants/app_fonts.dart';
 
@@ -19,7 +18,7 @@ class TextThemeManager {
       TextStyle(
         fontFamily: AppFonts.fontFamily,
         fontSize: fontSize ?? 14,
-        color: fontColor ?? AppColors.primary,
+        color: fontColor,
         fontWeight: fontWeight,
         height: 1.35,
         decoration: textDecoration ?? TextDecoration.none,
@@ -88,17 +87,6 @@ class TextThemeManager {
         textDecoration: textDecoration,
       );
 
-  static TextStyle semiBoldFont({
-    double? fontSize,
-    Color? fontColor,
-    TextDecoration? textDecoration,
-  }) =>
-      _baseText(
-        fontWeight: FontWeight.w600,
-        fontSize: fontSize,
-        fontColor: fontColor,
-        textDecoration: textDecoration,
-      );
 
   static TextStyle boldFont({
     double? fontSize,

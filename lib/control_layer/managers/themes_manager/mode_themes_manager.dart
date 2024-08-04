@@ -2,19 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:race_app/constants/app_colors.dart';
 import 'package:race_app/constants/app_fonts.dart';
 
-
 class ModeThemeManager {
   const ModeThemeManager._();
 
 // colorsScheme:
   static final colorScheme = ColorScheme.fromSeed(
     brightness: Brightness.light,
-    seedColor: AppColors.commonWhite,
+    seedColor: AppColors.white,
   );
 
   static final darkColorScheme = ColorScheme.fromSeed(
     brightness: Brightness.dark,
-    seedColor: AppColors.commonWhite,
+    seedColor: AppColors.white,
   );
 
 // Themes:
@@ -25,6 +24,11 @@ class ModeThemeManager {
     fontFamily: AppFonts.fontFamily,
     primaryColor: AppColors.primary,
     dialogBackgroundColor: AppColors.offWhiteBackground,
+    datePickerTheme: const DatePickerThemeData(
+      //because of time limits of task
+      backgroundColor: AppColors.secondary,
+      dividerColor: AppColors.primary,
+    ),
     textSelectionTheme: const TextSelectionThemeData(
       cursorColor: AppColors.primary,
     ),
@@ -37,8 +41,14 @@ class ModeThemeManager {
     fontFamily: AppFonts.fontFamily,
     primaryColor: AppColors.primary,
     dialogBackgroundColor: AppColors.offWhiteBackground,
+    datePickerTheme: const DatePickerThemeData(
+      //because of time limits of task
+      backgroundColor: AppColors.secondary,
+      dividerColor: AppColors.primary,
+    ),
     textSelectionTheme: const TextSelectionThemeData(
       cursorColor: AppColors.primary,
     ),
+    bottomNavigationBarTheme: BottomNavigationBarThemeData()
   );
 }

@@ -2,11 +2,12 @@
 //that all the project developers agree on using them in the whole app
 import 'package:flutter/material.dart';
 import 'package:race_app/constants/app_screen_dimensions.dart';
+import 'package:race_app/data_layer/models/home_page_models/location_data_model.dart';
 
 class Variables {
   //----------------------------- Strings-----------------------------
 
-static String currentLanguageCode = "";
+  static String currentLanguageCode = "";
   static const String enLangCode = "en";
   static const String arLangCode = "ar";
   static const String enCountryCode = "US";
@@ -23,7 +24,18 @@ static String currentLanguageCode = "";
   static const double buttonDefaultHeight = 44.0;
   static final double buttonDefaultwidth = kScreenWidth * 0.9;
 
-
+  //--- OverlayBuilder:
+  static const List<String> types = ['Real-time event', 'Virtual', 'All'];
+  static final List<LocationDataModel> locations = [
+    LocationDataModel(location: 'NEAR MY LOCATION (3)'),
+    LocationDataModel(location: 'Egypt (3)'),
+    LocationDataModel(location: 'Sweden (7)'),
+    LocationDataModel(location: 'Germany (9)'),
+    LocationDataModel(location: 'Greece (4)'),
+    LocationDataModel(location: 'Italy (9)'),
+    LocationDataModel(location: 'Kuwait (2)'),
+    LocationDataModel(location: 'France (3)')
+  ];
 
   //--- Linear-circular indicator:
   static const double strokeAlignCenter = 0.0;
@@ -37,7 +49,6 @@ static String currentLanguageCode = "";
 
   static const double double0_5 = 0.5;
   static const double double0_7 = 0.7;
-
 
   static const double zero = 0.0;
   static const double one = 1.0;
@@ -124,9 +135,8 @@ static String currentLanguageCode = "";
   static const int int60 = 60;
 
   static const int int70 = 70;
-  
-  static const int int76 = 76;
 
+  static const int int76 = 76;
 
   static const int int92 = 92;
 
@@ -142,5 +152,4 @@ static String currentLanguageCode = "";
   static const int int2200 = 2200;
   static const int int2500 = 2500;
   static const int int3500 = 3500;
-
 }

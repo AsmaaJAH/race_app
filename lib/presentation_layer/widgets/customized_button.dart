@@ -84,9 +84,9 @@ class CustomizedButton extends StatelessWidget {
                   ? TextThemeManager.fontWeight(
                       fontWeight: fontWeight!,
                       fontSize: fontSize,
-                      fontColor: textColor ?? AppColors.commonWhite)
+                      fontColor: textColor ?? AppColors.white)
                   : TextThemeManager.boldFont(
-                      fontColor: textColor ?? AppColors.commonWhite,
+                      fontColor: textColor ?? AppColors.white,
                       fontSize: fontSize ?? Variables.double18,
                     ),
             ),
