@@ -19,7 +19,7 @@ class DistanceOverlay extends StatefulWidget {
 }
 
 class _DistanceOverlayState extends State<DistanceOverlay> {
-  RangeValues values = const RangeValues(0, 200);
+  RangeValues distanceRange = const RangeValues(0, 200);
   void _onPressDone(context) {
     BlocProvider.of<VisibilityCubit>(context).turnOnNavBarVisibility();
 
@@ -30,7 +30,7 @@ class _DistanceOverlayState extends State<DistanceOverlay> {
       BlocProvider.of<RacesCubit>(context).numberOfFilters += 1;
     }
     BlocProvider.of<RacesCubit>(context)
-        .filterByDistance(values.start, values.end);
+        .filterByDistance(distanceRange.start, distanceRange.end);
     Navigator.of(context).pop();
   }
 
@@ -58,7 +58,7 @@ class _DistanceOverlayState extends State<DistanceOverlay> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 48),
             child: CustomLocalizedTextWidget(
-              stringKey: '${values.start.round()}K - ${values.end.round()}K',
+              stringKey: '${distanceRange.start.round()}K - ${distanceRange.end.round()}K',
               fontSize: 16,
               fontWeight: CustomTextWeight.regularFont,
               color: const Color(0xff1C325F),
@@ -67,13 +67,13 @@ class _DistanceOverlayState extends State<DistanceOverlay> {
           Padding(
             padding: const EdgeInsets.all(24),
             child: RangeSlider(
-                values: values,
+                values: distanceRange,
                 min: 0,
                 max: 200,
                 activeColor: const Color(0xffFFB715),
                 onChanged: (value) {
                   setState(() {
-                    values = value;
+                    distanceRange = value;
                   });
                 }),
           ),

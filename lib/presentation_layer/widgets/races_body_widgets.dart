@@ -36,7 +36,15 @@ class _RacesBodyWidgetsState extends State<RacesBodyWidgets>
                 child: SearchBarWidget(
                     searchBarHint: "Search Race Name or Country",
                     onChanged: (input) {
-                      BlocProvider.of<RacesCubit>(context).search(input);
+                      var bloc = BlocProvider.of<RacesCubit>(context);
+                      bloc.search(input);
+                      if (bloc.isSearchingByCountry &&
+                          bloc.filters[1].isEnabled == false) {
+                        //any preselected filters will be reset, and only the location chosen will be in the filter of location.
+                        bloc.reset();
+                        bloc.filters[1].isEnabled = true;
+                        bloc.numberOfFilters += 1;
+                      }
                     }))),
         const SliverToBoxAdapter(
           child: HorizonticalFiltersRow(),

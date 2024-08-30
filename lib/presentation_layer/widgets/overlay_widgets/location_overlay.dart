@@ -24,12 +24,10 @@ class LocationOverlay extends StatefulWidget {
 class _LocationOverlayState extends State<LocationOverlay> {
   void _onPressDone(context) {
     BlocProvider.of<VisibilityCubit>(context).turnOnNavBarVisibility();
-
-    if (BlocProvider.of<RacesCubit>(context).filters[widget.index].isEnabled ==
-        false) {
-      BlocProvider.of<RacesCubit>(context).filters[widget.index].isEnabled =
-          true;
-      BlocProvider.of<RacesCubit>(context).numberOfFilters += 1;
+    var blocRaces = BlocProvider.of<RacesCubit>(context);
+    if (blocRaces.filters[widget.index].isEnabled == false) {
+      blocRaces.filters[widget.index].isEnabled = true;
+      blocRaces.numberOfFilters += 1;
     }
     List<String> pickedLocations = [];
     for (var item in Variables.locations) {
@@ -37,7 +35,8 @@ class _LocationOverlayState extends State<LocationOverlay> {
         pickedLocations.add(item.location.split(' ')[0]);
       }
     }
-    BlocProvider.of<RacesCubit>(context).filterByLocation(pickedLocations);
+    blocRaces.updatePickedLocations(pickedLocations);
+    blocRaces.filterByLocation();
     Navigator.of(context).pop();
   }
 

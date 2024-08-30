@@ -17,7 +17,13 @@ class TypeOverlay extends StatefulWidget {
 }
 
 class _TypeOverlayState extends State<TypeOverlay> {
-  int pickedIndex = 0;
+  late int pickedTypeIndex;
+  @override
+  void initState() {
+    pickedTypeIndex = BlocProvider.of<RacesCubit>(context).pickedTypeIndex;
+    super.initState();
+  }
+
   void _onPressDone(context) {
     BlocProvider.of<VisibilityCubit>(context).turnOnNavBarVisibility();
 
@@ -26,7 +32,8 @@ class _TypeOverlayState extends State<TypeOverlay> {
       cubit.filters[widget.filterIndex].isEnabled = true;
       cubit.numberOfFilters += 1;
     }
-    cubit.filterByType(Variables.types[pickedIndex]);
+    cubit.updatePickedTypeIndex(pickedTypeIndex);
+    cubit.filterByType();
     Navigator.of(context).pop();
   }
 
@@ -57,11 +64,11 @@ class _TypeOverlayState extends State<TypeOverlay> {
             itemBuilder: (context, index) => InkWell(
               onTap: () {
                 setState(() {
-                  pickedIndex = index;
+                  pickedTypeIndex = index;
                 });
               },
               child: CustomTypeListTile(
-                isSelected: pickedIndex == index,
+                isSelected: pickedTypeIndex == index,
                 type: Variables.types[index],
               ),
             ),

@@ -83,7 +83,7 @@ class PersistNavBarView extends StatelessWidget {
             context,
             controller: kController,
             screens: _navScreens(),
-            padding: EdgeInsets.only(top: Variables.ten),
+            padding: const EdgeInsets.only(top: Variables.ten),
             items: navBarsItems,
             isVisible: BlocProvider.of<VisibilityCubit>(context).isVisible,
             navBarHeight: kScreenHeight * 0.08,
@@ -94,8 +94,8 @@ class PersistNavBarView extends StatelessWidget {
             hideNavigationBarWhenKeyboardAppears: true,
             decoration: NavBarDecoration(
               borderRadius: kScreenWidth > 500
-                  ? BorderRadius.vertical(top: Radius.circular(35))
-                  : BorderRadius.vertical(top: Radius.circular(25)),
+                  ? const BorderRadius.vertical(top: Radius.circular(35))
+                  : const BorderRadius.vertical(top: Radius.circular(25)),
               colorBehindNavBar: AppColors.white,
               boxShadow: <BoxShadow>[
                 const BoxShadow(

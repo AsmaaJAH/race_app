@@ -54,7 +54,7 @@ class CustomizedAppBar extends StatelessWidget {
           ]),
       flexibleSpace: FlexibleSpaceBar(
         background: Container(
-          padding: EdgeInsets.only(bottom: Variables.double14),
+          padding: const EdgeInsets.only(bottom: Variables.double14),
           decoration: const BoxDecoration(
             image: DecorationImage(
               image: AssetImage('assets/images/flexible_space_bar.png'),
@@ -77,7 +77,7 @@ class CustomizedAppBar extends StatelessWidget {
                                   ? kScreenWidth * 0.02
                                   : kScreenWidth * 0.035,
                               backgroundColor: AppColors.secondary,
-                              child: Icon(Icons.person))),
+                              child: const Icon(Icons.person))),
                       //icon: SvgPicture.asset('assets/images/account.svg')),
                     ],
                   )

@@ -49,6 +49,6 @@ class ModeThemeManager {
     textSelectionTheme: const TextSelectionThemeData(
       cursorColor: AppColors.primary,
     ),
-    bottomNavigationBarTheme: BottomNavigationBarThemeData()
+    bottomNavigationBarTheme: const BottomNavigationBarThemeData()
   );
 }

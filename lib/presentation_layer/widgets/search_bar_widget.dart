@@ -19,6 +19,7 @@ class SearchBarWidget extends StatefulWidget {
 class _SearchBarWidgetState extends State<SearchBarWidget> {
   late final TextEditingController controller;
   bool isFocused = false;
+
   @override
   void initState() {
     controller = TextEditingController();
@@ -57,14 +58,21 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
               ? IconButton(
                   onPressed: () {
                     controller.clear();
-                    BlocProvider.of<RacesCubit>(context).search('');
+                    var bloc = BlocProvider.of<RacesCubit>(context);
+                    bloc.search('');
+                    //if true
+                    if (bloc.isSearchingByCountry) {
+                      bloc.isSearchingByCountry = false;
+                      bloc.reset();
+                    }
                     FocusManager.instance.primaryFocus?.unfocus();
                     isFocused = false;
                   },
                   icon: const Icon(
                     Icons.cancel_outlined,
                     color: AppColors.secondary,
-                  ))
+                  ),
+                )
               : isFocused
                   ? null
                   : IconButton(

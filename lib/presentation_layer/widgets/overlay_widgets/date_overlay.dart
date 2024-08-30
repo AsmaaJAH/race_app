@@ -21,19 +21,25 @@ class DateOverlay extends StatefulWidget {
 }
 
 class _DateOverlayState extends State<DateOverlay> {
-  DateTime initalDate = DateTime.now();
-  DateTime finalDate = DateTime.now();
+  late DateTime initalDate;
+  late DateTime finalDate;
+  @override
+  void initState() {
+    initalDate = BlocProvider.of<RacesCubit>(context).initalDate;
+    finalDate = BlocProvider.of<RacesCubit>(context).finalDate;
+    super.initState();
+  }
 
   void _onPressDone(context) {
     BlocProvider.of<VisibilityCubit>(context).turnOnNavBarVisibility();
-
-    if (BlocProvider.of<RacesCubit>(context).filters[widget.index].isEnabled ==
-        false) {
-      BlocProvider.of<RacesCubit>(context).filters[widget.index].isEnabled =
-          true;
-      BlocProvider.of<RacesCubit>(context).numberOfFilters += 1;
+    var racesCubit = BlocProvider.of<RacesCubit>(context);
+    if (racesCubit.filters[widget.index].isEnabled == false) {
+      racesCubit.filters[widget.index].isEnabled = true;
+      racesCubit.numberOfFilters += 1;
     }
-    BlocProvider.of<RacesCubit>(context).filterByDate(initalDate, finalDate);
+    racesCubit.updateInitalDate(initalDate);
+    racesCubit.updateFinalDate(finalDate);
+    racesCubit.filterByDate();
     Navigator.of(context).pop();
   }
 

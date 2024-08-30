@@ -24,14 +24,14 @@ class NotificationsIconWidget extends StatelessWidget {
           //     maxRadius: kScreenWidth>500?Variables.seven,
           //   ),
             // ])
-    } else
+    } else {
       return InkWell(
         onTap: () {},
         child: Stack(
           children: <Widget>[
             Positioned(
               child: IconButton(
-                icon: Icon(
+                icon: const Icon(
                   Icons.notifications,
 
                   color: AppColors.secondary,
@@ -42,7 +42,7 @@ class NotificationsIconWidget extends StatelessWidget {
             Positioned(
               right: kScreenWidth * 0.043,
               top: kScreenHeight * 0.019,
-              child: CircleAvatar(
+              child: const CircleAvatar(
                 backgroundColor: AppColors.redNotification,
                 minRadius: Variables.five,
               ),
@@ -50,6 +50,7 @@ class NotificationsIconWidget extends StatelessWidget {
           ],
         ),
       );
+    }
   }
 }
 
