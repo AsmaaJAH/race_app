@@ -19,18 +19,24 @@ class DistanceOverlay extends StatefulWidget {
 }
 
 class _DistanceOverlayState extends State<DistanceOverlay> {
-  RangeValues distanceRange = const RangeValues(0, 200);
+  late RangeValues distanceRange;
+  @override
+  void initState() {
+    super.initState();
+    distanceRange = BlocProvider.of<RacesCubit>(context).distanceRange;
+  }
+
   void _onPressDone(context) {
     BlocProvider.of<VisibilityCubit>(context).turnOnNavBarVisibility();
-
-    if (BlocProvider.of<RacesCubit>(context).filters[widget.index].isEnabled ==
+    final races =BlocProvider.of<RacesCubit>(context);
+    if (races.filters[widget.index].isEnabled ==
         false) {
-      BlocProvider.of<RacesCubit>(context).filters[widget.index].isEnabled =
+      races.filters[widget.index].isEnabled =
           true;
-      BlocProvider.of<RacesCubit>(context).numberOfFilters += 1;
+      races.numberOfFilters += 1;
     }
-    BlocProvider.of<RacesCubit>(context)
-        .filterByDistance(distanceRange.start, distanceRange.end);
+    races.updateDistanceRange(distanceRange);
+    races.filterByDistance();
     Navigator.of(context).pop();
   }
 

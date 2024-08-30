@@ -36,22 +36,27 @@ class RacesCubit extends Cubit<RacesStates> {
     pickedTypeIndex = value;
     emit(RacesSuccessState());
   }
-  void updatePickedLocations(List<String>  value) {
+
+  void updatePickedLocations(List<String> value) {
     pickedLocations = value;
     emit(RacesSuccessState());
   }
+
   void updateDistanceRange(RangeValues value) {
     distanceRange = value;
     emit(RacesSuccessState());
   }
+
   void updateInitalDate(DateTime value) {
     initalDate = value;
     emit(RacesSuccessState());
   }
+
   void updateFinalDate(DateTime value) {
     finalDate = value;
     emit(RacesSuccessState());
   }
+
   void updateRacesRequestStatus({
     required RequestStatus requestStatus,
     List<RacesDataModel>? list,
@@ -77,11 +82,13 @@ class RacesCubit extends Cubit<RacesStates> {
   void search(String value) {
     exploreList = racesList.where((item) {
       if ( //search value is a country
-          item.country!.contains(value.trim()) ||
-              item.country!.contains(value.inCapitals.trim()) ||
-              item.country!.contains(value.allInCapitals.trim()) ||
-              item.country!.contains(value.capitalizeFirstOfEach.trim())) {
+          item.country != null &&
+              (item.country!.contains(value.trim()) ||
+                  item.country!.contains(value.inCapitals.trim()) ||
+                  item.country!.contains(value.allInCapitals.trim()) ||
+                  item.country!.contains(value.capitalizeFirstOfEach.trim()))) {
         isSearchingByCountry = true;
+        pickedLocations.add(item.country!);
         return true;
       } else {
         isSearchingByCountry = false;
@@ -150,7 +157,7 @@ class RacesCubit extends Cubit<RacesStates> {
     emit(RacesSuccessState());
   }
 
-  void filterByDistance(double value1, double value2) {
+  void filterByDistance() {
     List<RacesDataModel> tempItems = [];
     bool itemIsVlid = false;
     //if there are other active filters or search
@@ -166,7 +173,7 @@ class RacesCubit extends Cubit<RacesStates> {
         return double.parse(numericString);
       }).toList();
       for (var number in numbers) {
-        if (number >= value1 && number <= value2) {
+        if (number >= distanceRange.start && number <= distanceRange.end) {
           itemIsVlid = true;
         } else {
           itemIsVlid = false;
@@ -206,7 +213,8 @@ class RacesCubit extends Cubit<RacesStates> {
   }
 
   void reset({int? index}) {
-    isTryingToFind = false; //reset it to false temporary in all cases, and make it true inside each filter only
+    isTryingToFind =
+        false; //reset it to false temporary in all cases, and make it true inside each filter only
     if (index == null) {
       exploreList = racesList;
       for (int index = 0; index < filters.length; index++) {
@@ -237,12 +245,11 @@ class RacesCubit extends Cubit<RacesStates> {
                 filterByLocation();
                 break;
               case 'Distance':
-                filterByDistance(distanceRange.start, distanceRange.end);
+                filterByDistance();
                 break;
               case 'Date':
                 filterByDate();
                 break;
-            
             }
           }
         }
