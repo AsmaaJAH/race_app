@@ -41,16 +41,7 @@ class TextThemeManager {
         fontColor: fontColor,
         textDecoration: textDecoration,
       );
-  static TextStyle extraLightFont(
-          {double? fontSize,
-          Color? fontColor,
-          TextDecoration? textDecoration}) =>
-      _baseText(
-        fontWeight: FontWeight.w200,
-        fontSize: fontSize,
-        fontColor: fontColor,
-        textDecoration: textDecoration,
-      );
+
 
   static TextStyle lightFont({
     double? fontSize,
@@ -100,17 +91,6 @@ class TextThemeManager {
         textDecoration: textDecoration,
       );
 
-  static TextStyle extraBoldFont({
-    double? fontSize,
-    Color? fontColor,
-    TextDecoration? textDecoration,
-  }) =>
-      _baseText(
-        fontWeight: FontWeight.w800,
-        fontSize: fontSize,
-        fontColor: fontColor,
-        textDecoration: textDecoration,
-      );
 
   static TextStyle blackFont({
     double? fontSize,
@@ -144,7 +124,7 @@ class TextThemeManager {
         return boldFont(fontSize: fontSize, fontColor: fontColor);
 
       case CustomTextWeight.blackFont:
-        return extraBoldFont(fontSize: fontSize, fontColor: fontColor);
+        return blackFont(fontSize: fontSize, fontColor: fontColor);
     }
   }
 }

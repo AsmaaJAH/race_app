@@ -28,11 +28,9 @@ class _DistanceOverlayState extends State<DistanceOverlay> {
 
   void _onPressDone(context) {
     BlocProvider.of<VisibilityCubit>(context).turnOnNavBarVisibility();
-    final races =BlocProvider.of<RacesCubit>(context);
-    if (races.filters[widget.index].isEnabled ==
-        false) {
-      races.filters[widget.index].isEnabled =
-          true;
+    final races = BlocProvider.of<RacesCubit>(context);
+    if (races.filters[widget.index].isEnabled == false) {
+      races.filters[widget.index].isEnabled = true;
       races.numberOfFilters += 1;
     }
     races.updateDistanceRange(distanceRange);
@@ -64,7 +62,8 @@ class _DistanceOverlayState extends State<DistanceOverlay> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 48),
             child: CustomLocalizedTextWidget(
-              stringKey: '${distanceRange.start.round()}K - ${distanceRange.end.round()}K',
+              stringKey:
+                  '${distanceRange.start.round()}K - ${distanceRange.end.round()}K',
               fontSize: 16,
               fontWeight: CustomTextWeight.regularFont,
               color: const Color(0xff1C325F),
@@ -75,7 +74,7 @@ class _DistanceOverlayState extends State<DistanceOverlay> {
             child: RangeSlider(
                 values: distanceRange,
                 min: 0,
-                max: 200,
+                max: 250,
                 activeColor: const Color(0xffFFB715),
                 onChanged: (value) {
                   setState(() {

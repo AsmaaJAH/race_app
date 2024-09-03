@@ -17,7 +17,7 @@ class RacesCubit extends Cubit<RacesStates> {
   List<RacesDataModel> exploreList = [];
   List<RacesDataModel> list = [];
 
-  int index = 0;
+  int itemIndexPerPage = 0;
   int pageSize = 10;
   int numberOfFilters = 0;
   List<ButtonFilterModel> filters = [
@@ -28,7 +28,7 @@ class RacesCubit extends Cubit<RacesStates> {
   ];
   int pickedTypeIndex = 0;
   List<String> pickedLocations = [];
-  RangeValues distanceRange = const RangeValues(0, 200);
+  RangeValues distanceRange = const RangeValues(0, 250);
   DateTime initalDate = DateTime.now();
   DateTime finalDate = DateTime.now();
 
@@ -67,11 +67,11 @@ class RacesCubit extends Cubit<RacesStates> {
       emit(RacesLoadingState());
     } else if (raceRequestStatus == RequestStatus.completed) {
       racesList = list!;
-      while (index < 10 &&
+      while (itemIndexPerPage < 10 &&
           exploreList.length != racesList.length &&
-          index < pageSize) {
-        exploreList.add(racesList[index]);
-        index++;
+          itemIndexPerPage < pageSize) {
+        exploreList.add(racesList[itemIndexPerPage]);
+        itemIndexPerPage++;
       }
       emit(RacesSuccessState());
     } else if (raceRequestStatus == RequestStatus.error) {
@@ -108,12 +108,12 @@ class RacesCubit extends Cubit<RacesStates> {
   }
 
   void pagination() {
-    while (index < racesList.length &&
+    while (itemIndexPerPage < racesList.length &&
         exploreList.length != racesList.length &&
-        index < pageSize &&
-        isTryingToFind != true) {
-      exploreList.add(racesList[index]);
-      index++;
+        itemIndexPerPage < pageSize &&
+        isTryingToFind == false) {
+      exploreList.add(racesList[itemIndexPerPage]);
+      itemIndexPerPage++;
     }
     emit(RacesSuccessState());
   }
@@ -168,8 +168,7 @@ class RacesCubit extends Cubit<RacesStates> {
     }
     for (var item in list) {
       List<String> parts = item.distances!.split(','); //from assets
-      List<double> numbers = parts.map((part) {
-        String numericString = part.split('K')[0];
+      List<double> numbers = parts.map((numericString) {
         return double.parse(numericString);
       }).toList();
       for (var number in numbers) {
@@ -224,7 +223,7 @@ class RacesCubit extends Cubit<RacesStates> {
       numberOfFilters = 0;
       pickedTypeIndex = 0;
       pickedLocations = [];
-      distanceRange = const RangeValues(0, 200);
+      distanceRange = const RangeValues(0, 250);
       initalDate = DateTime.now();
       finalDate = DateTime.now();
       emit(RacesSuccessState());

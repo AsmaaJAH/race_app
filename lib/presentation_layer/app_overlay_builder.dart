@@ -9,8 +9,8 @@ class AppOverlayBuilder {
     required BuildContext context,
     required Widget customOverlayWidget,
   }) {
+    
     BlocProvider.of<VisibilityCubit>(context).turnOffVisibility();
-
     showModalBottomSheet(
       shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(

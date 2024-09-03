@@ -19,7 +19,7 @@ class HomeAssistFunctions {
           cubit.updatePickedLocations([]);
           break;
         case 'Distance':
-          cubit.updateDistanceRange(const RangeValues(0, 200));
+          cubit.updateDistanceRange(const RangeValues(0, 250));
           break;
         case 'Date':
           cubit.updateInitalDate(DateTime.now());

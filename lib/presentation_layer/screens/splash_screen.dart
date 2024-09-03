@@ -57,7 +57,7 @@ class _SplashScreenState extends State<SplashScreen> {
     });
   }
 
-  void navigateUser() async {
+  void navigateUser() async { //suppose to have "await" for token stored in shared preferences if it is already logged in, then navigate the user according to that
     Navigator.of(context).pushReplacement(
       MaterialPageRoute(
         builder: (context) => const PersistNavBarView(),

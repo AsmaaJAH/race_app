@@ -26,7 +26,7 @@ class DeviceInfo {
   }
 
 //-------------------- language ------------------------------------------
-  static void determineDeviceLanguage() async {
+  static void determineDeviceLanguage() {
     if (kNavigatorKey.currentContext == null) {
       return;
     } else if (!kNavigatorKey.currentContext!.mounted) {
@@ -38,5 +38,8 @@ class DeviceInfo {
           .split('-')[0]
           .toString();
     }
+  // // if async fun:
+  // List? languagesList= languagesList = await Devicelocale.preferredLanguages;
+  // kMostFavouriteUserLanguage =languagesList!.asMap()[0].toString().split('-')[0].toString();
   }
 }

@@ -25,20 +25,27 @@ class HomeRepository {
     if (response != null && response.isSucceeded) {
       debugPrint(response.responseBody);
       final List<RacesDataModel> data = [];
-      data.addAll(List<RacesDataModel>.from(json.decode(response.responseBody).map((element) => RacesDataModel.fromJson(element))));
+      data.addAll(
+        List<RacesDataModel>.from(
+          json.decode(response.responseBody).map(
+                (element) => RacesDataModel.fromJson(element),
+              ),
+        ),
+      );
       homeBlocProvider.updateRacesRequestStatus(
-          requestStatus: RequestStatus.completed, list: data);
-        
+        requestStatus: RequestStatus.completed,
+        list: data,
+      );
     } else if (response != null && response.error != null) {
       homeBlocProvider.updateRacesRequestStatus(
           requestStatus: RequestStatus.error);
       if (!context.mounted) {
         return response;
       }
-      //it'll never fail in race app with the asset's race data:
       AppSnackBar(
         context: context,
-        message: response.error!.message,
+        message: response.error!
+            .message, //here, it'll never fail in race app with the asset's race data
         isError: true,
       ).showAppSnackBar();
     }

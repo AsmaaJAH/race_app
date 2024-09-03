@@ -50,12 +50,14 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
               setState(() {
                 isFocused = false;
               });
+              //unfocus the currently focused node in widget tree
               FocusManager.instance.primaryFocus?.unfocus();
             },
       decoration: InputDecoration(
-          suffixIcon: isFocused ||
-                  (controller.text.isNotEmpty && widget.onChanged != null)
-              ? IconButton(
+          suffixIcon: (controller.text.isNotEmpty && widget.onChanged != null)
+              ?
+              // cancel:
+              IconButton(
                   onPressed: () {
                     controller.clear();
                     var bloc = BlocProvider.of<RacesCubit>(context);

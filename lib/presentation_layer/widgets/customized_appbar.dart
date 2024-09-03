@@ -18,7 +18,6 @@ class CustomizedAppBar extends StatelessWidget {
       stretch: true,
       pinned: true,
       floating: true,
-      // snap: true,
       elevation: Variables.ten,
       backgroundColor: AppColors.primary,
       bottom: TabBar(
@@ -52,6 +51,7 @@ class CustomizedAppBar extends StatelessWidget {
               ),
             ),
           ]),
+      //expandedHeight:Variables.double110,
       flexibleSpace: FlexibleSpaceBar(
         background: Container(
           padding: const EdgeInsets.only(bottom: Variables.double14),
@@ -71,14 +71,18 @@ class CustomizedAppBar extends StatelessWidget {
                     children: [
                       const NotificationsIconWidget(),
                       IconButton(
-                          onPressed: () {},
-                          icon: CircleAvatar(
-                              radius: kScreenWidth > 500
-                                  ? kScreenWidth * 0.02
-                                  : kScreenWidth * 0.035,
-                              backgroundColor: AppColors.secondary,
-                              child: const Icon(Icons.person))),
-                      //icon: SvgPicture.asset('assets/images/account.svg')),
+                        onPressed: () {},
+                        icon: CircleAvatar(
+                          radius: kScreenWidth > 500
+                              ? kScreenWidth * 0.02
+                              : kScreenWidth * 0.035,
+                          backgroundColor: AppColors.secondary,
+                          child: const Icon(
+                            Icons.person,
+                            color: AppColors.primary, //for dark mode
+                          ),
+                        ),
+                      ),
                     ],
                   )
                 ]),

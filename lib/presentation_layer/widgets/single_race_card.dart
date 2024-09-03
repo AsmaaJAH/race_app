@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -37,6 +38,7 @@ class SingleRaceCard extends StatelessWidget {
                 Row(
                   children: [
                     Container(
+                      //to save the place of the photo or placeholder
                       width: kScreenWidth * 0.32,
                     ),
                     Expanded(
@@ -46,21 +48,25 @@ class SingleRaceCard extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const CircleAvatar(
-                              radius: 10,
-                              backgroundColor: AppColors.primary,
-                              child: FittedBox(
-                                fit: BoxFit.scaleDown,
-                                child: Icon(
-                                  Icons.star_rate_rounded,
-                                  size: 16,
-                                  color: Colors.white,
+                            if (race.organizer != '' &&
+                                race.organizer != null) ...[
+                              const CircleAvatar(
+                                radius: 10,
+                                backgroundColor: AppColors.primary,
+                                child: FittedBox(
+                                  fit: BoxFit.scaleDown,
+                                  child: Icon(
+                                    Icons.star_rate_rounded,
+                                    size: 16,
+                                    color: Colors.white,
+                                  ),
                                 ),
                               ),
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            ),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                            ] else
+                              const SizedBox.shrink(),
                             SizedBox(
                               width: kScreenWidth * 0.47,
                               child: CustomLocalizedTextWidget(
@@ -77,16 +83,17 @@ class SingleRaceCard extends StatelessWidget {
                             const SizedBox(
                               height: 4,
                             ),
-                            const CustomLocalizedTextWidget(
-                              fontSize: Variables.double14,
-                              stringKey: 'Orgaized by',
-                              fontWeight: CustomTextWeight.mediumFont,
-                              color: AppColors.lightBlue,
-                            ),
-                            const SizedBox(
-                              height: Variables.five,
-                            ),
-                            if (race.organizer != '' || race.organizer != null)
+                            if (race.organizer != '' &&
+                                race.organizer != null) ...[
+                              const CustomLocalizedTextWidget(
+                                fontSize: Variables.double14,
+                                stringKey: 'Orgaized by',
+                                fontWeight: CustomTextWeight.mediumFont,
+                                color: AppColors.lightBlue,
+                              ),
+                              const SizedBox(
+                                height: Variables.five,
+                              ),
                               CustomLocalizedTextWidget(
                                 isSoftWrapped: true,
                                 isThreeDotsInOverFlow: true,
@@ -96,6 +103,10 @@ class SingleRaceCard extends StatelessWidget {
                                     LocaleKeys.placeHolderText,
                                 fontWeight: CustomTextWeight.mediumFont,
                                 color: AppColors.orange,
+                              ),
+                            ] else
+                              const SizedBox(
+                                height: Variables.double20,
                               ),
                             const SizedBox(
                               height: Variables.eight,
@@ -107,7 +118,12 @@ class SingleRaceCard extends StatelessWidget {
                                   child: Column(
                                     children: [
                                       SingleLineWidget(
-                                        text: race.distances ?? "",
+                                        text: race.distances != null
+                                            ? "${race.distances?.splitMapJoin(
+                                                RegExp(r','),
+                                                onMatch: (p0) => 'K, ',
+                                              )}K"
+                                            : "",
                                         icon: FontAwesomeIcons.route,
                                       ),
                                       const SizedBox(
@@ -115,7 +131,8 @@ class SingleRaceCard extends StatelessWidget {
                                       ),
                                       SingleLineWidget(
                                         text: race.date != null
-                                            ? "${race.date!.substring(0, 4)}/${race.date!.substring(4, 6).toString().padLeft(2, '0')}/${race.date!.substring(6)}"
+                                            //DateFormat.yMMMd() is similar but not exactly the same, ex: "Sep 2, 2024"
+                                            ? "${race.date!.substring(6).toString().replaceFirst(RegExp(r'0'), '')} ${DateFormat.LLL().format(DateTime.parse("${race.date}"))}, ${race.date!.substring(0, 4)}"
                                             : "",
                                         icon: FontAwesomeIcons.calendarDays,
                                       ),

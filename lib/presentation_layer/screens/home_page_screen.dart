@@ -14,9 +14,8 @@ class HomePageScreen extends StatelessWidget {
       initialIndex: 2, //start: 0,1,2
       child: Scaffold(
         body: NestedScrollView(
-          headerSliverBuilder: (context, innerBoxIsScrolled) => [
-            const CustomizedAppBar(),
-          ],
+          headerSliverBuilder: (context, innerBoxIsScrolled) =>
+              [const CustomizedAppBar()],
           body: TabBarView(
             children: [
               Center(

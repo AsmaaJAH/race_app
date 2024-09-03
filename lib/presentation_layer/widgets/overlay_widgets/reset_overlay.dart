@@ -27,7 +27,7 @@ class ResetOverlay extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 16),
               child: Text(
-                'Clear filters?',
+                'CLEAR FILTERS?',
                 style: TextThemeManager.boldFont(fontSize: 22),
               ),
             ),

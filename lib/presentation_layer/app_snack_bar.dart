@@ -23,7 +23,7 @@ class AppSnackBar {
     this.prefix,
     this.shape,
     this.snackBarKey,
-    this.isSnackBarLocalized = true,
+    this.isSnackBarLocalized = false, //true in real-life apps
     this.behavior,
     this.fontSize,
     this.contentHeight,
@@ -74,77 +74,81 @@ class AppSnackBar {
 
   void showAppSnackBar() {
     ScaffoldMessenger.of(context).removeCurrentSnackBar();
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-      key: snackBarKey,
-      margin: margin,
-      action: action,
-      elevation: elevation ?? Variables.zero,
-      animation: animation,
-      shape: shape ??
-          RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(
-              Radius.circular(
-                isRoundedBorder ? Variables.ten : Variables.zero,
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        key: snackBarKey,
+        margin: margin,
+        action: action,
+        elevation: elevation ?? Variables.zero,
+        animation: animation,
+        shape: shape ??
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(
+                Radius.circular(
+                  isRoundedBorder ? Variables.ten : Variables.zero,
+                ),
               ),
             ),
-          ),
-      behavior: isFloatingSnackBar ? SnackBarBehavior.floating : behavior,
-      duration: Duration(
-        seconds: durationInSeconds ?? Variables.twoInt,
-      ),
-      padding: padding ??
-          EdgeInsetsDirectional.only(
-            top: kScreenWidth * 0.03,
-            bottom: kScreenWidth * 0.05,
-            start: kScreenWidth * 0.04,
-            end: kScreenWidth * 0.02,
-          ),
-      width: width, //?? kScreenWidth * 0.9,
-      content: content ??
-          SizedBox(
-            height: contentHeight, //?? kScreenHeight * 0.025,
-            child: Wrap(
-              crossAxisAlignment: WrapCrossAlignment.center,
-              children: [
-                prefix != null
-                    ? prefix!
-                    : isError
-                        ? Container(
-                            decoration: const BoxDecoration(
-                              color: AppColors.white,
-                              shape: BoxShape.circle,
-                            ),
-                            margin: EdgeInsetsDirectional.only(
-                                bottom:
-                                    bottomMarginCloseError ?? Variables.zero,
-                                end: Variables.ten),
-                            child: Icon(errorIcon ?? Icons.close,
-                                size: Variables.double20,
-                                color: AppColors.redSnackBar),
-                          )
-                        : Padding(
-                            padding: const EdgeInsetsDirectional.only(
-                                bottom: Variables.five, end: Variables.ten),
-                            child: Icon(
-                                successIcon ?? Icons.check_circle_rounded,
-                                size: Variables.double24,
-                                color: AppColors.white),
-                          ),
-                CustomLocalizedTextWidget(
-                  isTranslate: isSnackBarLocalized,
-                  stringKey: message,
-                  textAlign: TextAlign.start,
-                  style: textStyle ??
-                      TextThemeManager.boldFont(
-                          fontColor: AppColors.white,
-                          fontSize: Variables.double16),
-                ),
-                suffix != null ? suffix! : const SizedBox.shrink()
-              ],
+        behavior: isFloatingSnackBar ? SnackBarBehavior.floating : behavior,
+        duration: Duration(
+          seconds: durationInSeconds ?? Variables.twoInt,
+        ),
+        padding: padding ??
+            EdgeInsetsDirectional.only(
+              top: kScreenWidth * 0.03,
+              bottom: kScreenWidth * 0.05,
+              start: kScreenWidth * 0.04,
+              end: kScreenWidth * 0.02,
             ),
-          ),
-      backgroundColor: backgroundColor ??
-          (isError ? const Color.fromARGB(195, 113, 0, 0) : const Color.fromARGB(182, 0, 10, 53)),
-    ));
+        width: width,
+        content: content ??
+            SizedBox(
+              height: contentHeight, //?? kScreenHeight * 0.025,
+              child: Wrap(
+                crossAxisAlignment: WrapCrossAlignment.center,
+                children: [
+                  prefix != null
+                      ? prefix!
+                      : isError
+                          ? Container(
+                              decoration: const BoxDecoration(
+                                color: AppColors.white,
+                                shape: BoxShape.circle,
+                              ),
+                              margin: EdgeInsetsDirectional.only(
+                                  bottom:
+                                      bottomMarginCloseError ?? Variables.zero,
+                                  end: Variables.ten),
+                              child: Icon(errorIcon ?? Icons.close,
+                                  size: Variables.double20,
+                                  color: AppColors.white),
+                            )
+                          : Padding(
+                              padding: const EdgeInsetsDirectional.only(
+                                  bottom: Variables.five, end: Variables.ten),
+                              child: Icon(
+                                  successIcon ?? Icons.check_circle_rounded,
+                                  size: Variables.double24,
+                                  color: AppColors.white),
+                            ),
+                  CustomLocalizedTextWidget(
+                    isTranslate: isSnackBarLocalized,
+                    stringKey: message,
+                    textAlign: TextAlign.start,
+                    style: textStyle ??
+                        TextThemeManager.boldFont(
+                            fontColor: AppColors.white,
+                            fontSize: Variables.double16),
+                  ),
+                  suffix != null ? suffix! : const SizedBox.shrink()
+                ],
+              ),
+            ),
+        backgroundColor: backgroundColor ??
+            (isError
+                ? const Color.fromARGB(195, 113, 0, 0)
+                : const Color.fromARGB(182, 0, 10, 53)),
+      ),
+    );
   }
 }

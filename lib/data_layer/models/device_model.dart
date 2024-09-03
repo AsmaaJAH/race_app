@@ -1,3 +1,4 @@
+//Blueprint
 class DeviceModel {
   DeviceModel({
     this.deviceType,

@@ -27,14 +27,13 @@ class Variables {
   //--- OverlayBuilder:
   static const List<String> types = ['Real-time event', 'Virtual', 'All'];
   static final List<LocationDataModel> locations = [
-    LocationDataModel(location: 'NEAR MY LOCATION (3)'),
+    LocationDataModel(location: 'NEAR MY LOCATION '),
     LocationDataModel(location: 'Egypt (3)'),
-    LocationDataModel(location: 'Sweden (7)'),
+    LocationDataModel(location: 'France (7)'),
     LocationDataModel(location: 'Germany (9)'),
     LocationDataModel(location: 'Greece (4)'),
     LocationDataModel(location: 'Italy (9)'),
     LocationDataModel(location: 'Kuwait (2)'),
-    LocationDataModel(location: 'France (3)')
   ];
 
   //--- Linear-circular indicator:

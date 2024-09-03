@@ -12,12 +12,10 @@ import 'package:race_app/constants/app_screen_dimensions.dart';
 
 
 //===============================================================================================
-//------ Hello, I am just a debuger & functinal tester for Asmaa, feel free to delete me --------
+//------ Hello, I am just a debuger & functional tester for Asmaa, feel free to delete me -------
 //===============================================================================================
 class DeleteMe extends StatelessWidget {
-  const DeleteMe({super.key, this.title = "Title"});
-
-  final String title;
+  const DeleteMe({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -71,7 +71,7 @@ class _DateOverlayState extends State<DateOverlay> {
               DateTime? picked = await showDatePicker(
                   context: context,
                   firstDate: DateTime.now(),
-                  lastDate: DateTime(2025),
+                  lastDate: DateTime(2027),
                   initialDate: DateTime.now());
               if (picked != null) {
                 setState(() {
@@ -88,9 +88,10 @@ class _DateOverlayState extends State<DateOverlay> {
             title: 'To',
             onTap: () async {
               DateTime? picked = await showDatePicker(
+                  // builder: ,//use builder if u wanna customize widget
                   context: context,
                   firstDate: DateTime.now(),
-                  lastDate: DateTime(2030),
+                  lastDate: DateTime(2029),
                   initialDate: DateTime.now());
               if (picked != null) {
                 setState(() {
@@ -149,7 +150,7 @@ class CustomDateButton extends StatelessWidget {
           const SizedBox(
             height: 6,
           ),
-          GestureDetector(
+          InkWell(
             onTap: onTap,
             child: Container(
               decoration: BoxDecoration(

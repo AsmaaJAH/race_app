@@ -14,19 +14,18 @@ import 'package:race_app/presentation_layer/screens/home_page_screen.dart';
 PersistentTabController kController =
     PersistentTabController(initialIndex: Variables.threeInt);
 
-List<Widget> _navScreens() {
-  return const [
-    DeleteMe(),
-    DeleteMe(),
-    DeleteMe(),
-    HomePageScreen(),
-    DeleteMe(),
-  ];
-}
-
 class PersistNavBarView extends StatelessWidget {
   const PersistNavBarView({super.key});
-
+  
+  List<Widget> _navScreens() {
+    return const [
+      DeleteMe(),
+      DeleteMe(),
+      DeleteMe(),
+      HomePageScreen(),
+      DeleteMe(),
+    ];
+  }
   List<PersistentBottomNavBarItem> get navBarsItems {
     return [
       const BottomNavigatorManager(

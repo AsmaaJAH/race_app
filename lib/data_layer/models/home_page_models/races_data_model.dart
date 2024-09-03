@@ -8,16 +8,18 @@ class RacesDataModel {
   String? type;
   String? distances;
 
-  RacesDataModel(
-      {required this.name,
+  RacesDataModel({
+      required this.name,
       this.organizer,
       required this.date,
       required this.country,
       required this.city,
       required this.image,
       required this.type,
-      required this.distances});
+      required this.distances,
+      });
 
+  //fromJson constructor :
   RacesDataModel.fromJson(Map<String, dynamic> json) {
     name = json['name'];
     organizer = json['organizer'];
@@ -28,7 +30,7 @@ class RacesDataModel {
     type = json['type'];
     distances = json['distances'];
   }
-
+  //toJson Fun:
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['name'] = name;
@@ -41,15 +43,4 @@ class RacesDataModel {
     map['distances'] = distances;
     return map;
   }
-}
-
-class RacesListResponse {
-  List<RacesDataModel?>? racesList;
-  int? totalPages;
-  int? totalRecords;
-  RacesListResponse({
-    this.racesList,
-    this.totalPages,
-    this.totalRecords,
-  });
 }

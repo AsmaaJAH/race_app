@@ -32,6 +32,8 @@ class ModeThemeManager {
     textSelectionTheme: const TextSelectionThemeData(
       cursorColor: AppColors.primary,
     ),
+    bottomNavigationBarTheme: const BottomNavigationBarThemeData()
+
   );
 
   static final darkThemes = ThemeData(

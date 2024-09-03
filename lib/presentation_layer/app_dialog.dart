@@ -1,12 +1,9 @@
-
-
-import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:race_app/constants/app_colors.dart';
 import 'package:race_app/constants/variables.dart';
+import 'package:race_app/control_layer/functions/device_info.dart';
 import 'package:race_app/presentation_layer/widgets/two_opitons_dialog_widget.dart';
-
 
 class AppDialog {
   const AppDialog({
@@ -21,10 +18,10 @@ class AppDialog {
     this.positiveButtonColor,
     this.titleStyle,
     this.dialogContentTextStyle,
-    this.isDialogContentLocalized=true,
-    this.isDialogTitleLocalized=true,
-    this.isNegativeBtnTxtDialogLocalized=true,
-    this.isPositiveBtnTxtDialogLocalized=true,
+    this.isDialogContentLocalized = true,
+    this.isDialogTitleLocalized = true,
+    this.isNegativeBtnTxtDialogLocalized = true,
+    this.isPositiveBtnTxtDialogLocalized = true,
   });
   final bool isDialogContentLocalized;
   final bool isDialogTitleLocalized;
@@ -42,7 +39,7 @@ class AppDialog {
   final TextStyle? titleStyle;
   final TextStyle? dialogContentTextStyle;
   void showTwoOptionsDialog() {
-    if (Platform.isIOS) {
+    if (DeviceInfo.currentDeviceInfo.deviceType == "ios") {
       showCupertinoDialog(
         context: context,
         builder: builder ??
@@ -55,10 +52,12 @@ class AppDialog {
                   ),
                   child: CupertinoAlertDialog(
                     content: TwoOptionsDialogWidget(
-                      isNegativeBtnTxtDialogLocalized: isNegativeBtnTxtDialogLocalized,
-                      isPositiveBtnTxtDialogLocalized: isPositiveBtnTxtDialogLocalized,
+                      isNegativeBtnTxtDialogLocalized:
+                          isNegativeBtnTxtDialogLocalized,
+                      isPositiveBtnTxtDialogLocalized:
+                          isPositiveBtnTxtDialogLocalized,
                       isDialogContentLocalized: isDialogContentLocalized,
-                      isDialogTitleLocalized:isDialogTitleLocalized ,
+                      isDialogTitleLocalized: isDialogTitleLocalized,
                       titleStyle: titleStyle,
                       dialogContentTextStyle: dialogContentTextStyle,
                       dialogTitle: dialogTitle,
@@ -79,11 +78,12 @@ class AppDialog {
         builder: builder ??
             (ctx) => AlertDialog(
                   backgroundColor: AppColors.offWhiteBackground,
-                  //surfaceTintColor: AppColors.red,
                   contentPadding: const EdgeInsets.all(Variables.zero),
                   content: TwoOptionsDialogWidget(
-                    isNegativeBtnTxtDialogLocalized: isNegativeBtnTxtDialogLocalized,
-                    isPositiveBtnTxtDialogLocalized: isNegativeBtnTxtDialogLocalized,
+                    isNegativeBtnTxtDialogLocalized:
+                        isNegativeBtnTxtDialogLocalized,
+                    isPositiveBtnTxtDialogLocalized:
+                        isNegativeBtnTxtDialogLocalized,
                     isDialogContentLocalized: isDialogContentLocalized,
                     isDialogTitleLocalized: isDialogTitleLocalized,
                     titleStyle: titleStyle,

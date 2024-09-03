@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:race_app/constants/app_colors.dart';
 import 'package:race_app/constants/app_enum.dart';
+import 'package:race_app/constants/app_screen_dimensions.dart';
 import 'package:race_app/constants/variables.dart';
 import 'package:race_app/control_layer/managers/themes_manager/text_theme_manager.dart';
 import 'package:race_app/presentation_layer/widgets/custom_localized_text_widget.dart';
@@ -52,7 +53,7 @@ class CustomizedButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: width,
-      height: height ?? 44,//in race app, use ratio
+      height: height ?? kScreenWidth*0.1,
       padding:
           EdgeInsets.symmetric(horizontal: horizontalSpacing ?? Variables.zero),
       child: TextButton(

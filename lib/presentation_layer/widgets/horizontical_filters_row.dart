@@ -22,6 +22,7 @@ class HorizonticalFiltersRow extends StatelessWidget {
     return BlocBuilder<RacesCubit, RacesStates>(
       builder: (context, state) {
         var cubit = BlocProvider.of<RacesCubit>(context);
+//-------------------------------   fixed Button ----------------------------------------------------------     
         var fixedButton = InkWell(
           onTap: () {
             const AppOverlayBuilder().openOverlayUI(
@@ -33,8 +34,9 @@ class HorizonticalFiltersRow extends StatelessWidget {
                 : kScreenWidth * 0.032),
             margin: EdgeInsets.only(left: kScreenWidth * 0.04),
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8),
-                color: AppColors.primary),
+              borderRadius: BorderRadius.circular(8),
+              color: AppColors.primary,
+            ),
             child: Row(
               children: [
                 Icon(
@@ -60,6 +62,8 @@ class HorizonticalFiltersRow extends StatelessWidget {
             ),
           ),
         );
+//-------------------------------   horizontal-Scroll Buttons  ----------------------------------------------------------     
+
         var horizontalScrollButtons = Expanded(
           child: SingleChildScrollView(
             scrollDirection: Axis.horizontal,
@@ -114,7 +118,7 @@ class HorizonticalFiltersRow extends StatelessWidget {
                                   break;
                               }
                             },
-                            child: filter.value.isEnabled == true
+                            child: filter.value.isEnabled
                                 ? Container(
                                     width: kScreenWidth * 0.3,
                                     padding: EdgeInsets.only(
@@ -179,7 +183,8 @@ class HorizonticalFiltersRow extends StatelessWidget {
                                     ),
                                   ),
                           ),
-                        ))
+                        )
+                        )
                     .toList(),
               ),
             ),

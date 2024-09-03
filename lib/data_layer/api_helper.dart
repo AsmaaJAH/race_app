@@ -8,8 +8,8 @@ import 'package:race_app/data_layer/models/response_wrapper_model.dart';
 import 'package:race_app/my_app.dart';
 
 class ApiHelper {
-  static final ApiHelper _singleton = ApiHelper._internal();
   ApiHelper._internal();
+  static final ApiHelper _singleton = ApiHelper._internal();
 
   factory ApiHelper() {
     return _singleton;
