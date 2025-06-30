@@ -2,7 +2,7 @@
 
 Mobile app using Flutter framework and Dart language.
 
-The code is now merged from all the different "features sub-branches" to the **"development"** branch.
+• Racemate Project: sports app to find running companion, including: Cubit/Bloc state management, Filters search, repositories, API services, & extensions.
 
 ## simulation video: 
 https://drive.google.com/file/d/1gfuAeDTkqp-3J6LcKLxvQckq5bxNlGHj/view?usp=drive_link
